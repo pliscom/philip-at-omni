@@ -500,6 +500,50 @@
 
     .cta-section p { font-size: 1rem; color: var(--text-secondary); margin-bottom: 2rem; }
 
+    .contact-row {
+      display: flex;
+      align-items: stretch;
+      justify-content: center;
+      gap: 1.25rem;
+      flex-wrap: wrap;
+      max-width: 760px;
+      margin: 0 auto;
+    }
+
+    .contact-card {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.4rem;
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 1.5rem 1.75rem;
+      min-width: 200px;
+      flex: 1;
+      text-decoration: none;
+      transition: all 0.15s ease;
+    }
+
+    .contact-card:hover {
+      border-color: var(--pink);
+      transform: translateY(-2px);
+    }
+
+    .contact-card .contact-icon { font-size: 1.4rem; }
+    .contact-card .contact-label {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+    }
+    .contact-card .contact-value {
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--text-primary);
+    }
+
     .cta-buttons { display: flex; align-items: center; justify-content: center; gap: 1rem; flex-wrap: wrap; }
 
     /* FOOTER */
@@ -557,6 +601,65 @@
 
     .mini-stat-num { font-size: 1.6rem; font-weight: 700; color: var(--pink); letter-spacing: -0.03em; }
     .mini-stat-label { font-size: 12px; color: var(--text-secondary); margin-top: 4px; }
+
+    .scatter-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 1.5rem;
+      margin-bottom: 2rem;
+    }
+    .scatter-title {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--text-primary);
+      margin-bottom: 1rem;
+    }
+    .scatter-svg { width: 100%; height: auto; display: block; }
+    .scatter-legend {
+      display: flex;
+      gap: 1.5rem;
+      margin-top: 0.75rem;
+      font-size: 12px;
+      color: var(--text-secondary);
+    }
+    .scatter-legend-item { display: inline-flex; align-items: center; gap: 6px; }
+    .scatter-dot { width: 9px; height: 9px; border-radius: 50%; display: inline-block; }
+
+    .driver-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 1.5rem;
+      margin-bottom: 2rem;
+    }
+    .driver-title {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--text-primary);
+      margin-bottom: 1.25rem;
+    }
+    .driver-row { margin-bottom: 1rem; }
+    .driver-row:last-child { margin-bottom: 0; }
+    .driver-row-label {
+      display: flex;
+      justify-content: space-between;
+      font-size: 13px;
+      color: var(--text-secondary);
+      margin-bottom: 6px;
+    }
+    .driver-row-label strong { color: var(--text-primary); font-weight: 600; }
+    .driver-bar-track {
+      height: 10px;
+      background: var(--bg-3);
+      border-radius: 6px;
+      overflow: hidden;
+    }
+    .driver-bar-fill {
+      height: 100%;
+      border-radius: 6px;
+      background: linear-gradient(90deg, var(--pink), var(--pink-light));
+    }
 
     /* AI DEMO */
     .ai-demo-card {
@@ -746,7 +849,7 @@
       <a href="#experience">Experience</a>
     </div>
     <div class="nav-right">
-      <a href="mailto:pliscom@gmail.com" class="btn btn-primary">Get in touch →</a>
+      <a href="#contact" class="btn btn-primary">Get in touch →</a>
     </div>
   </div>
 </nav>
@@ -756,9 +859,9 @@
   <div class="hero-split">
     <div class="hero-text">
       <h1><span class="gradient-text">Philip Liscom</span>,<br/>the analytics professional<br/>built for <em>Omni</em></h1>
-      <p>Philip Liscom has spent 7 years building the systems that Omni sells — semantic layers, AI pipelines, and self-serve analytics that give businesses trusted answers at speed. Now he wants to take that story to customers.</p>
+      <p>Philip has spent 7 years as the customer Omni is selling to. He's seen the pain across dozens of businesses, built the solutions — and now he wants to take that story to market with Omni.</p>
       <div class="hero-cta">
-        <a href="#story" class="btn btn-primary">Read the case study →</a>
+        <a href="#why-philip" class="btn btn-primary">Why Philip →</a>
         <a href="#experience" class="btn btn-ghost">View experience</a>
       </div>
     </div>
@@ -878,8 +981,8 @@
 <section id="why-philip" style="background: var(--bg-2); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);">
   <div class="container">
     <div class="section-label">Why Philip</div>
-    <div class="section-title">Built for the SE motion</div>
-    <div class="section-sub">Philip doesn't just understand Omni's product — he's lived it. He built the same thing from the inside.</div>
+    <div class="section-title">Skills that transfer directly to the SE role</div>
+    <div class="section-sub" style="max-width: 760px;">Philip isn't pivoting into Solutions Engineering from scratch — he's already been doing the work. The skills he's used every day at PwC and Intuit map directly onto what Solutions Engineering demands.</div>
     <div class="feature-grid">
       <div class="feature-card">
         <div class="feature-icon">🤝</div>
@@ -919,44 +1022,131 @@
 <section id="story" class="customer-story">
   <div class="container">
     <div class="highlight-tag">Case Study</div>
-    <div class="section-title" style="max-width: 640px; margin-bottom: 0.75rem;">
-      How Philip Liscom cut analytics turnaround from hours to 30 minutes — and saved his team a full day each week
+    <div class="section-title" style="max-width: 720px; margin-bottom: 0.75rem;">
+      Millions in underpayments uncovered — and guiding Woolworths through one of Australia's most complex remediations
     </div>
-    <p style="color: var(--text-secondary); font-size: 14px; margin-bottom: 3rem;">Intuit APAC · Sydney, Australia · 350+ employees in region</p>
+    <p style="color: var(--text-secondary); font-size: 14px; margin-bottom: 0.5rem;">PwC · Woolworths Group · Sydney, Australia</p>
+    <p style="margin-bottom: 3rem;"><a href="https://www.afr.com/work-and-careers/workplace/coles-woolworths-1b-underpayment-case-off-the-rails-judge-20260322-p5rmex" target="_blank" style="font-size: 13px; color: #2563eb; text-decoration: none; font-weight: 600;">Read coverage of the case in the AFR →</a></p>
 
     <div class="two-col">
       <div>
         <div style="margin-bottom: 2rem;">
           <div class="section-label" style="margin-bottom: 0.5rem;">The challenge</div>
-          <p style="font-size: 14px; color: var(--text-secondary); line-height: 1.7;">Intuit's APAC sales and finance leaders were drowning in ad hoc data requests. Every question — rep performance, pipeline health, churn by segment — required a data analyst to manually pull, clean, and format data. Weekly leadership reporting alone consumed a full day of team effort. Non-technical stakeholders had no path to self-serve.</p>
+          <p style="font-size: 14px; color: var(--text-secondary); line-height: 1.7;">Woolworths suspected their payroll systems had systemic underpayment issues affecting thousands of employees across multiple pay classifications. The problem spanned years of data, complex award interpretations, and multiple internal systems — with legal, HR, finance, and data teams all needing to work together to understand the true scale.</p>
         </div>
         <div style="margin-bottom: 2rem;">
-          <div class="section-label" style="margin-bottom: 0.5rem;">The solution</div>
-          <p style="font-size: 14px; color: var(--text-secondary); line-height: 1.7;">Philip designed and deployed a semantic data layer on top of Databricks — defining metric frameworks, business logic, and dimension/measure relationships so every stakeholder was working from the same source of truth. He then built an AI-powered reporting pipeline: Python extracts Databricks data, an LLM writes the commentary, and the output auto-populates Google Slides and posts directly to Slack.</p>
+          <div class="section-label" style="margin-bottom: 0.5rem;">The discovery</div>
+          <p style="font-size: 14px; color: var(--text-secondary); line-height: 1.7;">Philip led discovery sessions to map Woolworths' data landscape — understanding what systems they had, how teams operated, and where the data lived. Weekly working sessions with middle management, data teams, lawyers, and program leads shaped the analytical approach and built alignment across a complex stakeholder group from day one.</p>
+        </div>
+        <div style="margin-bottom: 2rem;">
+          <div class="section-label" style="margin-bottom: 0.5rem;">The engagement</div>
+          <p style="font-size: 14px; color: var(--text-secondary); line-height: 1.7;">What started as weekly findings presentations evolved into daily standups as the work intensified. Philip analysed millions of rows of payroll data using SQL and built the underlying models in SQL Server, while staying on-call throughout — jumping into ad hoc calls to problem-solve in real time and keeping all stakeholders aligned as the complexity grew.</p>
+        </div>
+        <div style="margin-bottom: 2rem;">
+          <div class="section-label" style="margin-bottom: 0.5rem;">The aha moment</div>
+          <p style="font-size: 14px; color: var(--text-secondary); line-height: 1.7;">When the underpayment results were ready, Philip built a layered dashboard — high-level numbers for senior stakeholders, granular drivers for the data and legal teams. One dashboard, every audience, no confusion. The room understood the scale of the problem immediately.</p>
         </div>
         <div>
           <div class="section-label" style="margin-bottom: 0.5rem;">The outcome</div>
-          <p style="font-size: 14px; color: var(--text-secondary); line-height: 1.7;">Weekly reporting dropped from a full day to under one hour. Ad hoc analysis turnaround went from hours to under 30 minutes. Non-technical teams could self-serve without analyst involvement — freeing the team to focus on deeper analysis and strategic work.</p>
+          <p style="font-size: 14px; color: var(--text-secondary); line-height: 1.7;">Millions of dollars in underpayments uncovered. Thousands of employees owed remediation. The engagement stood up to legal scrutiny and became the foundation for Woolworths' remediation program.</p>
         </div>
       </div>
 
       <div>
-        <div class="story-quote">"Philip didn't just build dashboards — he built a system that made our entire organisation smarter. The semantic layer he put in place is the reason our leadership team can trust the data they see every day."</div>
-        <div class="story-meta">
-          <div class="avatar">SL</div>
-          <div>
-            <div class="story-name">Sales Leadership</div>
-            <div class="story-role">Intuit APAC, Sydney</div>
+        <div style="display: flex; gap: 1rem; flex-wrap: wrap; margin-bottom: 2rem;">
+          <div class="mini-stat">
+            <div class="mini-stat-num">&gt;$10M</div>
+            <div class="mini-stat-label">in underpayments uncovered</div>
+          </div>
+          <div class="mini-stat">
+            <div class="mini-stat-num">1000s</div>
+            <div class="mini-stat-label">of employees remediated</div>
           </div>
         </div>
-        <div style="display: flex; gap: 1rem; flex-wrap: wrap; margin-top: 1.5rem;">
-          <div class="mini-stat">
-            <div class="mini-stat-num">~96%</div>
-            <div class="mini-stat-label">reduction in reporting time</div>
+        <div class="scatter-card">
+          <div class="scatter-title">Employee pay variance vs. award rate</div>
+          <svg viewBox="0 0 440 300" class="scatter-svg" role="img" aria-label="Scatter plot of employees by salary and under/overpayment amount">
+            <line x1="50" y1="250" x2="410" y2="250" stroke="var(--border-dark)" stroke-width="1.5" />
+            <line x1="50" y1="250" x2="50" y2="30" stroke="var(--border-dark)" stroke-width="1.5" />
+            <line x1="230.0" y1="250" x2="230.0" y2="30" stroke="var(--border-dark)" stroke-width="1" stroke-dasharray="4 4" />
+          <circle cx="122.7" cy="171.1" r="4.5" fill="#ef4444" fill-opacity="0.7" />
+          <circle cx="183.1" cy="109.2" r="4.5" fill="#ef4444" fill-opacity="0.7" />
+          <circle cx="214.4" cy="131.0" r="4.5" fill="#ef4444" fill-opacity="0.7" />
+          <circle cx="131.5" cy="221.4" r="4.5" fill="#ef4444" fill-opacity="0.7" />
+          <circle cx="112.2" cy="225.3" r="4.5" fill="#ef4444" fill-opacity="0.7" />
+          <circle cx="51.8" cy="219.2" r="4.5" fill="#ef4444" fill-opacity="0.7" />
+          <circle cx="279.9" cy="152.1" r="4.5" fill="#22c55e" fill-opacity="0.7" />
+          <circle cx="90.5" cy="209.0" r="4.5" fill="#ef4444" fill-opacity="0.7" />
+          <circle cx="350.9" cy="113.7" r="4.5" fill="#22c55e" fill-opacity="0.7" />
+          <circle cx="239.0" cy="123.2" r="4.5" fill="#22c55e" fill-opacity="0.7" />
+          <circle cx="253.5" cy="47.7" r="4.5" fill="#22c55e" fill-opacity="0.7" />
+          <circle cx="274.3" cy="70.0" r="4.5" fill="#22c55e" fill-opacity="0.7" />
+          <circle cx="74.4" cy="205.1" r="4.5" fill="#ef4444" fill-opacity="0.7" />
+          <circle cx="250.8" cy="174.0" r="4.5" fill="#22c55e" fill-opacity="0.7" />
+          <circle cx="174.7" cy="198.2" r="4.5" fill="#ef4444" fill-opacity="0.7" />
+          <circle cx="239.7" cy="111.5" r="4.5" fill="#22c55e" fill-opacity="0.7" />
+          <circle cx="157.2" cy="128.8" r="4.5" fill="#ef4444" fill-opacity="0.7" />
+          <circle cx="72.2" cy="221.1" r="4.5" fill="#ef4444" fill-opacity="0.7" />
+          <circle cx="260.3" cy="103.7" r="4.5" fill="#22c55e" fill-opacity="0.7" />
+          <circle cx="206.5" cy="173.0" r="4.5" fill="#ef4444" fill-opacity="0.7" />
+          <circle cx="182.2" cy="146.7" r="4.5" fill="#ef4444" fill-opacity="0.7" />
+          <circle cx="340.5" cy="82.1" r="4.5" fill="#22c55e" fill-opacity="0.7" />
+          <circle cx="188.0" cy="186.2" r="4.5" fill="#ef4444" fill-opacity="0.7" />
+          <circle cx="312.8" cy="133.0" r="4.5" fill="#22c55e" fill-opacity="0.7" />
+          <circle cx="244.0" cy="94.4" r="4.5" fill="#22c55e" fill-opacity="0.7" />
+          <circle cx="268.6" cy="47.0" r="4.5" fill="#22c55e" fill-opacity="0.7" />
+          <circle cx="264.6" cy="153.3" r="4.5" fill="#22c55e" fill-opacity="0.7" />
+          <circle cx="149.7" cy="203.6" r="4.5" fill="#ef4444" fill-opacity="0.7" />
+          <circle cx="159.0" cy="225.0" r="4.5" fill="#ef4444" fill-opacity="0.7" />
+          <circle cx="308.6" cy="87.7" r="4.5" fill="#22c55e" fill-opacity="0.7" />
+          <circle cx="283.0" cy="66.8" r="4.5" fill="#22c55e" fill-opacity="0.7" />
+          <circle cx="296.7" cy="100.9" r="4.5" fill="#22c55e" fill-opacity="0.7" />
+          <circle cx="242.6" cy="122.7" r="4.5" fill="#22c55e" fill-opacity="0.7" />
+          <circle cx="399.7" cy="73.5" r="4.5" fill="#22c55e" fill-opacity="0.7" />
+          <circle cx="259.2" cy="142.7" r="4.5" fill="#22c55e" fill-opacity="0.7" />
+          <circle cx="170.6" cy="220.9" r="4.5" fill="#ef4444" fill-opacity="0.7" />
+          <circle cx="364.5" cy="110.0" r="4.5" fill="#22c55e" fill-opacity="0.7" />
+          <circle cx="264.8" cy="76.9" r="4.5" fill="#22c55e" fill-opacity="0.7" />
+          <circle cx="239.6" cy="159.4" r="4.5" fill="#22c55e" fill-opacity="0.7" />
+          <circle cx="114.3" cy="228.1" r="4.5" fill="#ef4444" fill-opacity="0.7" />
+          <circle cx="79.8" cy="200.6" r="4.5" fill="#ef4444" fill-opacity="0.7" />
+          <circle cx="183.4" cy="221.2" r="4.5" fill="#ef4444" fill-opacity="0.7" />
+          <circle cx="96.7" cy="207.9" r="4.5" fill="#ef4444" fill-opacity="0.7" />
+          <circle cx="280.9" cy="158.4" r="4.5" fill="#22c55e" fill-opacity="0.7" />
+          <circle cx="125.3" cy="217.2" r="4.5" fill="#ef4444" fill-opacity="0.7" />
+          <circle cx="320.1" cy="128.4" r="4.5" fill="#22c55e" fill-opacity="0.7" />
+          <circle cx="378.9" cy="77.4" r="4.5" fill="#22c55e" fill-opacity="0.7" />
+          <circle cx="164.5" cy="179.7" r="4.5" fill="#ef4444" fill-opacity="0.7" />
+          <circle cx="276.0" cy="164.5" r="4.5" fill="#22c55e" fill-opacity="0.7" />
+          <circle cx="269.9" cy="51.2" r="4.5" fill="#22c55e" fill-opacity="0.7" />
+          <circle cx="104.4" cy="199.1" r="4.5" fill="#ef4444" fill-opacity="0.7" />
+          <circle cx="167.8" cy="188.3" r="4.5" fill="#ef4444" fill-opacity="0.7" />
+          <circle cx="206.4" cy="120.9" r="4.5" fill="#ef4444" fill-opacity="0.7" />
+          <circle cx="101.5" cy="231.6" r="4.5" fill="#ef4444" fill-opacity="0.7" />
+          <circle cx="215.5" cy="162.5" r="4.5" fill="#ef4444" fill-opacity="0.7" />
+            <text x="38" y="140.0" transform="rotate(-90 38 140.0)" text-anchor="middle" font-size="11" fill="var(--text-muted)" font-weight="600">Salary</text>
+            <text x="230.0" y="274" text-anchor="middle" font-size="11" fill="var(--text-muted)" font-weight="600">Under / overpayment ($)</text>
+            <text x="58" y="262" font-size="10" fill="var(--text-muted)">Underpaid</text>
+            <text x="402" y="262" text-anchor="end" font-size="10" fill="var(--text-muted)">Overpaid</text>
+          </svg>
+          <div class="scatter-legend">
+            <span class="scatter-legend-item"><span class="scatter-dot" style="background: #ef4444;"></span>Underpaid employee</span>
+            <span class="scatter-legend-item"><span class="scatter-dot" style="background: #22c55e;"></span>Overpaid employee</span>
           </div>
-          <div class="mini-stat">
-            <div class="mini-stat-num">&lt;30min</div>
-            <div class="mini-stat-label">ad hoc analysis turnaround</div>
+        </div>
+        <div class="driver-card">
+          <div class="driver-title">Underpayment drivers identified</div>
+          <div class="driver-row">
+            <div class="driver-row-label"><span><strong>Driver 1</strong> — Missed breaks</span><span>45%</span></div>
+            <div class="driver-bar-track"><div class="driver-bar-fill" style="width: 45%;"></div></div>
+          </div>
+          <div class="driver-row">
+            <div class="driver-row-label"><span><strong>Driver 2</strong> — Allowances</span><span>33%</span></div>
+            <div class="driver-bar-track"><div class="driver-bar-fill" style="width: 33%;"></div></div>
+          </div>
+          <div class="driver-row">
+            <div class="driver-row-label"><span><strong>Driver 3</strong> — Incorrect classification</span><span>22%</span></div>
+            <div class="driver-bar-track"><div class="driver-bar-fill" style="width: 22%;"></div></div>
           </div>
         </div>
       </div>
@@ -1073,13 +1263,26 @@
 </section>
 
 <!-- CTA -->
-<div class="cta-section">
+<div class="cta-section" id="contact">
   <div class="section-label">Next steps</div>
   <h2>Ready to see Philip at Omni?</h2>
   <p>Available from August 2026. Happy to meet in person across the bridge.</p>
-  <div class="cta-buttons">
-    <a href="mailto:pliscom@gmail.com" class="btn btn-primary">Get in touch →</a>
-    <a href="tel:+61450209389" class="btn btn-ghost">+61 4 5020 9389</a>
+  <div class="contact-row">
+    <a href="mailto:pliscom@gmail.com" class="contact-card">
+      <span class="contact-icon">✉️</span>
+      <span class="contact-label">Email</span>
+      <span class="contact-value">pliscom@gmail.com</span>
+    </a>
+    <a href="tel:+61450209389" class="contact-card">
+      <span class="contact-icon">📞</span>
+      <span class="contact-label">Phone</span>
+      <span class="contact-value">+61 4 5020 9389</span>
+    </a>
+    <a href="https://www.linkedin.com/in/philip-liscom-270290119/" target="_blank" class="contact-card">
+      <span class="contact-icon">💼</span>
+      <span class="contact-label">LinkedIn</span>
+      <span class="contact-value">Philip Liscom</span>
+    </a>
   </div>
 </div>
 
