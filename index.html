@@ -1,0 +1,1096 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Philip Liscom — Solutions Engineer</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --pink: hsl(340deg 95% 55%);
+      --pink-light: hsl(340deg 95% 65%);
+      --pink-bg: hsl(340deg 95% 97%);
+      --bg: #f8f9fc;
+      --bg-2: #f9f9f9;
+      --bg-3: #f3f3f3;
+      --border: #e5e5e5;
+      --border-dark: #d0d0d0;
+      --text-primary: #0a0a0a;
+      --text-secondary: #555;
+      --text-muted: #999;
+      --card-bg: #ffffff;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--bg);
+      color: var(--text-primary);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* NAV */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(255,255,255,0.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+      height: 60px;
+      display: flex;
+      align-items: center;
+    }
+
+    .nav-inner {
+      width: 100%;
+      max-width: 74rem;
+      margin: 0 auto;
+      padding-inline: 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 0;
+      text-decoration: none;
+    }
+
+    .nav-menu {
+      display: flex;
+      align-items: center;
+      gap: 1.75rem;
+    }
+
+    .nav-menu a {
+      font-family: 'Inter', sans-serif;
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--text-secondary);
+      text-decoration: none;
+      transition: color 0.15s;
+    }
+
+    .nav-menu a:hover { color: var(--text-primary); }
+
+    @media (max-width: 860px) {
+      .nav-menu { display: none; }
+    }
+
+    .nav-right {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 13px;
+      font-weight: 600;
+      border-radius: 8px;
+      padding: 8px 18px;
+      text-decoration: none;
+      cursor: pointer;
+      transition: all 0.15s;
+      border: none;
+    }
+
+    .btn-primary { background: var(--pink); color: white; }
+    .btn-primary:hover { background: var(--pink-light); transform: translateY(-1px); }
+
+    .btn-ghost {
+      background: transparent;
+      color: var(--text-primary);
+      border: 1px solid var(--border-dark);
+    }
+    .btn-ghost:hover { border-color: #aaa; }
+
+    /* HERO */
+    .hero {
+      padding: 80px 2rem 40px;
+    }
+
+    .hero-split {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: center;
+      max-width: 74rem;
+      margin: 0 auto;
+      text-align: left;
+    }
+
+    @media (max-width: 900px) {
+      .hero-split { grid-template-columns: 1fr; gap: 3rem; }
+      .hero-text { text-align: center; }
+      .hero-text p { margin: 0 auto 2.5rem; }
+      .hero-cta { justify-content: center; }
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--bg-2);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 6px 16px;
+      font-size: 12px;
+      font-weight: 500;
+      color: var(--text-secondary);
+      margin-bottom: 2rem;
+      animation: fadeInUp 0.6s ease both;
+    }
+
+    .hero-badge .dot {
+      width: 6px; height: 6px;
+      border-radius: 50%;
+      background: var(--pink);
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.4} }
+
+    .hero h1 {
+      font-size: clamp(2.4rem, 5vw, 4rem);
+      font-weight: 700;
+      line-height: 1.12;
+      letter-spacing: -0.03em;
+      color: var(--text-primary);
+      margin-bottom: 1.5rem;
+      animation: fadeInUp 0.6s ease 0.1s both;
+    }
+
+    .hero h1 em { font-style: normal; color: var(--pink); }
+
+    .gradient-text {
+      background-image: linear-gradient(90deg, #9333ea, var(--pink), #f4a261);
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      color: transparent;
+    }
+
+    .hero p {
+      font-size: 1.1rem;
+      color: var(--text-secondary);
+      max-width: 520px;
+      margin: 0 0 2.5rem;
+      animation: fadeInUp 0.6s ease 0.2s both;
+      line-height: 1.7;
+    }
+
+    .hero-cta {
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      gap: 1rem;
+      flex-wrap: wrap;
+      animation: fadeInUp 0.6s ease 0.3s both;
+    }
+
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(16px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* TRUSTED BY */
+    .trusted {
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      padding: 2rem;
+      text-align: center;
+      background: var(--bg-2);
+    }
+
+    .trusted p {
+      font-size: 11px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: 1.5rem;
+      font-weight: 500;
+    }
+
+    .trusted-logos {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 2.5rem;
+      flex-wrap: wrap;
+    }
+
+    .trusted-logo {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--text-muted);
+      letter-spacing: 0.02em;
+    }
+
+    /* SECTIONS */
+    section { padding: 56px 2rem; }
+    .container { max-width: 74rem; margin: 0 auto; }
+
+    .section-label {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--pink);
+      margin-bottom: 1rem;
+    }
+
+    .section-title {
+      font-size: clamp(1.6rem, 3vw, 2.4rem);
+      font-weight: 700;
+      letter-spacing: -0.025em;
+      line-height: 1.2;
+      color: var(--text-primary);
+      margin-bottom: 1rem;
+    }
+
+    .section-sub {
+      font-size: 1rem;
+      color: var(--text-secondary);
+      max-width: 540px;
+      line-height: 1.7;
+      margin-bottom: 3rem;
+    }
+
+    /* STATS ROW */
+    .stats-row {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 1px;
+      background: var(--border);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      overflow: hidden;
+      margin-bottom: 4rem;
+    }
+
+    .stat-card {
+      background: var(--card-bg);
+      padding: 2rem 1.5rem;
+      text-align: center;
+    }
+
+    .stat-number {
+      font-size: 2.2rem;
+      font-weight: 700;
+      color: var(--pink);
+      letter-spacing: -0.03em;
+      line-height: 1;
+      margin-bottom: 0.5rem;
+    }
+
+    .stat-label { font-size: 13px; color: var(--text-secondary); line-height: 1.4; }
+
+    /* FEATURE GRID */
+    .feature-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 1px;
+      background: var(--border);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      overflow: hidden;
+    }
+
+    .feature-card {
+      background: var(--card-bg);
+      padding: 2rem;
+      transition: background 0.2s;
+    }
+
+    .feature-card:hover { background: var(--bg-2); }
+
+    .feature-icon {
+      width: 40px; height: 40px;
+      background: var(--bg-2);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 1rem;
+      font-size: 18px;
+    }
+
+    .feature-title { font-size: 15px; font-weight: 600; margin-bottom: 0.5rem; color: var(--text-primary); }
+    .feature-body { font-size: 13px; color: var(--text-secondary); line-height: 1.6; }
+
+    /* CUSTOMER STORY */
+    .customer-story {
+      background: var(--bg-2);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .story-quote {
+      font-size: clamp(1.1rem, 2vw, 1.4rem);
+      font-weight: 500;
+      line-height: 1.6;
+      color: var(--text-primary);
+      letter-spacing: -0.01em;
+      border-left: 3px solid var(--pink);
+      padding-left: 1.5rem;
+      margin-bottom: 2rem;
+    }
+
+    .story-meta { display: flex; align-items: center; gap: 1rem; margin-bottom: 1.5rem; }
+
+    .avatar {
+      width: 52px; height: 52px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--pink), #ff8c6b);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 18px;
+      font-weight: 700;
+      color: white;
+      flex-shrink: 0;
+    }
+
+    .story-name { font-size: 15px; font-weight: 600; color: var(--text-primary); }
+    .story-role { font-size: 13px; color: var(--text-secondary); }
+
+    /* CHAMPION REVIEWS */
+    .reviews-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 1rem;
+      margin-top: 3rem;
+    }
+
+    .review-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 1.5rem;
+      position: relative;
+    }
+
+    .review-card::before {
+      content: '"';
+      position: absolute;
+      top: 1rem; right: 1.25rem;
+      font-size: 3rem;
+      color: var(--pink);
+      opacity: 0.2;
+      line-height: 1;
+      font-family: Georgia, serif;
+    }
+
+    .review-stars { display: flex; gap: 3px; margin-bottom: 0.75rem; }
+    .star { color: var(--pink); font-size: 13px; }
+
+    .review-text { font-size: 13.5px; line-height: 1.65; color: var(--text-secondary); margin-bottom: 1.25rem; }
+
+    .review-author { display: flex; align-items: center; gap: 10px; }
+
+    .review-avatar {
+      width: 32px; height: 32px;
+      border-radius: 50%;
+      background: var(--bg-3);
+      border: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 11px;
+      font-weight: 600;
+      color: var(--text-secondary);
+      flex-shrink: 0;
+    }
+
+    .review-name { font-size: 13px; font-weight: 600; color: var(--text-primary); }
+    .review-company { font-size: 11px; color: var(--text-muted); }
+
+    /* TIMELINE */
+    .timeline { position: relative; padding-left: 2rem; }
+
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 0; top: 8px; bottom: 8px;
+      width: 1px;
+      background: var(--border);
+    }
+
+    .timeline-item { position: relative; margin-bottom: 2.5rem; }
+
+    .timeline-item::before {
+      content: '';
+      position: absolute;
+      left: -2rem; top: 8px;
+      width: 9px; height: 9px;
+      border-radius: 50%;
+      background: var(--pink);
+      border: 2px solid var(--bg);
+      transform: translateX(-4px);
+    }
+
+    .timeline-date {
+      font-size: 11px; font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--pink);
+      margin-bottom: 0.4rem;
+    }
+
+    .timeline-company { font-size: 15px; font-weight: 600; color: var(--text-primary); margin-bottom: 0.25rem; }
+    .timeline-role { font-size: 13px; color: var(--text-secondary); margin-bottom: 0.75rem; }
+
+    .timeline-bullets { list-style: none; display: flex; flex-direction: column; gap: 0.4rem; }
+
+    .timeline-bullets li {
+      font-size: 13px;
+      color: var(--text-secondary);
+      display: flex; gap: 8px;
+      line-height: 1.5;
+    }
+
+    .timeline-bullets li::before { content: '→'; color: var(--pink); flex-shrink: 0; margin-top: 1px; }
+
+    /* SKILLS */
+    .skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 0.75rem; }
+
+    .skill-pill {
+      background: var(--bg-2);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 0.75rem 1rem;
+      font-size: 13px; font-weight: 500;
+      color: var(--text-secondary);
+      display: flex; align-items: center; gap: 8px;
+      transition: all 0.15s;
+    }
+
+    .skill-pill:hover { border-color: var(--pink); color: var(--text-primary); }
+
+    .skill-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--pink); flex-shrink: 0; }
+
+    /* CTA SECTION */
+    .cta-section {
+      text-align: center;
+      padding: 100px 2rem;
+      border-top: 1px solid var(--border);
+      background: var(--bg-2);
+    }
+
+    .cta-section h2 {
+      font-size: clamp(1.8rem, 3.5vw, 3rem);
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      color: var(--text-primary);
+      margin-bottom: 1rem;
+    }
+
+    .cta-section p { font-size: 1rem; color: var(--text-secondary); margin-bottom: 2rem; }
+
+    .cta-buttons { display: flex; align-items: center; justify-content: center; gap: 1rem; flex-wrap: wrap; }
+
+    /* FOOTER */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 1rem;
+      background: var(--bg);
+    }
+
+    footer p { font-size: 12px; color: var(--text-muted); }
+
+    .footer-links { display: flex; gap: 1.5rem; }
+
+    .footer-links a {
+      font-size: 12px; color: var(--text-muted);
+      text-decoration: none; transition: color 0.15s;
+    }
+
+    .footer-links a:hover { color: var(--text-primary); }
+
+    /* TWO COL */
+    .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: start; }
+
+    @media (max-width: 700px) {
+      .two-col { grid-template-columns: 1fr; gap: 2rem; }
+    }
+
+    .highlight-tag {
+      display: inline-block;
+      background: var(--pink-bg);
+      color: var(--pink);
+      border: 1px solid rgba(233,52,105,0.2);
+      border-radius: 6px;
+      font-size: 11px; font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      padding: 3px 10px;
+      margin-bottom: 0.75rem;
+    }
+
+    .mini-stat {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 1rem 1.25rem;
+      flex: 1;
+      min-width: 120px;
+      text-align: center;
+    }
+
+    .mini-stat-num { font-size: 1.6rem; font-weight: 700; color: var(--pink); letter-spacing: -0.03em; }
+    .mini-stat-label { font-size: 12px; color: var(--text-secondary); margin-top: 4px; }
+
+    /* AI DEMO */
+    .ai-demo-card {
+      background: var(--bg-2);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 1.5rem;
+    }
+
+    .ai-search-bar {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 1rem 1.25rem;
+      margin-bottom: 1.25rem;
+    }
+
+    .ai-search-icon { font-size: 15px; color: var(--text-muted); flex-shrink: 0; }
+    .ai-search-text { flex: 1; font-size: 13.5px; color: var(--text-primary); line-height: 1.4; }
+
+    .ai-search-submit {
+      width: 32px; height: 32px;
+      border-radius: 50%;
+      background: var(--pink);
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 14px;
+      flex-shrink: 0;
+    }
+
+    .ai-response-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 1.5rem;
+      display: flex;
+      gap: 1rem;
+    }
+
+    .ai-avatar {
+      width: 36px; height: 36px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--pink), #ff8c6b);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 16px;
+      color: white;
+      flex-shrink: 0;
+    }
+
+    .ai-response-title { font-size: 14px; font-weight: 600; color: var(--text-primary); margin-bottom: 1.5rem; }
+
+    .ai-bar-chart {
+      display: flex;
+      justify-content: center;
+      align-items: flex-end;
+      gap: 3.5rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .ai-bar-group { display: flex; flex-direction: column; align-items: center; }
+
+    .ai-bar-stack {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-end;
+      height: 140px;
+      gap: 0.4rem;
+    }
+
+    .ai-bar-value { font-size: 12px; font-weight: 600; color: var(--text-secondary); }
+
+    .ai-bar {
+      width: 64px;
+      background: linear-gradient(180deg, var(--pink-light), var(--pink));
+      border-radius: 6px 6px 0 0;
+    }
+
+    .ai-bar-label { font-size: 12px; color: var(--text-muted); margin-top: 0.6rem; }
+
+    .ai-stat-highlight {
+      display: inline-flex;
+      align-items: baseline;
+      gap: 0.5rem;
+      background: var(--pink-bg);
+      border: 1px solid rgba(233,52,105,0.15);
+      border-radius: 12px;
+      padding: 0.85rem 1.25rem;
+      margin-bottom: 1.25rem;
+    }
+
+    .ai-stat-number { font-size: 1.5rem; font-weight: 700; color: var(--pink); letter-spacing: -0.02em; }
+    .ai-stat-label { font-size: 13px; color: var(--text-secondary); }
+
+    .ai-response-card .ai-response-text {
+      font-size: 13px;
+      color: var(--text-secondary);
+      line-height: 1.7;
+      max-width: none;
+      margin: 0;
+    }
+
+    /* LOGO MARQUEE */
+    .logo-marquee-section {
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      background: var(--bg-2);
+      padding: 2.5rem 0;
+    }
+
+    .marquee-row + .marquee-row { margin-top: 2.5rem; }
+
+    .marquee-label {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: 1.25rem;
+      text-align: center;
+    }
+
+    .marquee-track-wrap {
+      overflow: hidden;
+      -webkit-mask-image: linear-gradient(90deg, transparent, #000 4%, #000 96%, transparent);
+      mask-image: linear-gradient(90deg, transparent, #000 4%, #000 96%, transparent);
+    }
+
+    .marquee-track {
+      display: flex;
+      align-items: center;
+      gap: 2rem;
+      width: max-content;
+      animation: marquee-scroll 65s linear infinite;
+    }
+
+    .marquee-logo {
+      height: 36px;
+      width: 110px;
+      object-fit: contain;
+      opacity: 0.85;
+      transition: opacity 0.2s ease;
+    }
+
+    .marquee-logo:hover { opacity: 1; }
+
+    .marquee-category {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      white-space: nowrap;
+    }
+
+    .marquee-dot {
+      color: var(--border);
+      font-size: 20px;
+      line-height: 1;
+    }
+
+    @keyframes marquee-scroll {
+      from { transform: translateX(0); }
+      to { transform: translateX(-50%); }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-inner">
+    <a class="nav-logo" href="https://omni.co" target="_blank">
+      <img style="height: 30px; width: auto; display: block;" src="assets/omni_logo.png" alt="Omni" />
+    </a>
+    <div class="nav-menu">
+      <a href="#why-philip">Why Philip for Omni</a>
+      <a href="#story">Consulting Case Study</a>
+      <a href="#reviews">Champion Reviews</a>
+      <a href="#experience">Experience</a>
+    </div>
+    <div class="nav-right">
+      <a href="mailto:pliscom@gmail.com" class="btn btn-primary">Get in touch →</a>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-split">
+    <div class="hero-text">
+      <h1><span class="gradient-text">Philip Liscom</span>,<br/>the analytics professional<br/>built for <em>Omni</em></h1>
+      <p>Philip Liscom has spent 7 years building the systems that Omni sells — semantic layers, AI pipelines, and self-serve analytics that give businesses trusted answers at speed. Now he wants to take that story to customers.</p>
+      <div class="hero-cta">
+        <a href="#story" class="btn btn-primary">Read the case study →</a>
+        <a href="#experience" class="btn btn-ghost">View experience</a>
+      </div>
+    </div>
+    <div class="hero-demo">
+      <div class="ai-demo-card">
+        <div class="ai-search-bar">
+          <span class="ai-search-icon">🔍</span>
+          <span class="ai-search-text">How much weekly reporting time has Philip saved at Intuit for Weekly Business Reviews?</span>
+          <span class="ai-search-submit">→</span>
+        </div>
+        <div class="ai-response-card">
+          <div class="ai-avatar">✦</div>
+          <div>
+            <div class="ai-response-title">Weekly Business Review prep — before vs after automation</div>
+            <div class="ai-bar-chart">
+              <div class="ai-bar-group">
+                <div class="ai-bar-stack">
+                  <div class="ai-bar-value">8 hrs</div>
+                  <div class="ai-bar" style="height: 140px;"></div>
+                </div>
+                <div class="ai-bar-label">Before automation</div>
+              </div>
+              <div class="ai-bar-group">
+                <div class="ai-bar-stack">
+                  <div class="ai-bar-value">1 hr</div>
+                  <div class="ai-bar" style="height: 18px;"></div>
+                </div>
+                <div class="ai-bar-label">After automation</div>
+              </div>
+            </div>
+            <div class="ai-stat-highlight">
+              <span class="ai-stat-number">87.5%</span>
+              <span class="ai-stat-label">reduction in weekly reporting time</span>
+            </div>
+            <p class="ai-response-text">Philip designed a Python → Databricks → LLM → Slides/Slack pipeline that auto-generates Weekly Business Review decks and commentary — cutting prep time from a full working day to under an hour, every single week.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- LOGO MARQUEE -->
+<section class="logo-marquee-section">
+  <div class="container">
+    <div class="marquee-row">
+      <div class="marquee-label">Companies, Platforms &amp; Tools</div>
+      <div class="marquee-track-wrap">
+        <div class="marquee-track">
+          <span class="marquee-category">Work Experience</span>
+          <img class="marquee-logo" src="assets/work_1_intuit.png" alt="Intuit" />
+          <img class="marquee-logo" src="assets/work_2_pwc_trim.png" alt="PwC" />
+          <img class="marquee-logo" src="assets/work_3_qb.svg.png" alt="QuickBooks" />
+          <img class="marquee-logo" src="assets/work_4_mc_trim.png" alt="Mailchimp" />
+          <span class="marquee-dot">&bull;</span>
+          <span class="marquee-category">Data Platforms</span>
+          <img class="marquee-logo" src="assets/platform_1_databricks.png" alt="Databricks" />
+          <img class="marquee-logo" src="assets/platform_2_bq_trans.png" alt="BigQuery" />
+          <img class="marquee-logo" src="assets/platform_3_ss_trans.png" alt="SQL Server" />
+          <span class="marquee-dot">&bull;</span>
+          <span class="marquee-category">Data Visualisation</span>
+          <img class="marquee-logo" src="assets/vis_1_powerbi_trans.png" alt="Power BI" />
+          <img class="marquee-logo" src="assets/vis_2_tableau_trim.png" alt="Tableau" />
+          <img class="marquee-logo" src="assets/vis_3_qilk_trim.png" alt="Qlik Sense" />
+          <span class="marquee-dot">&bull;</span>
+          <span class="marquee-category">Work Experience</span>
+          <img class="marquee-logo" src="assets/work_1_intuit.png" alt="Intuit" />
+          <img class="marquee-logo" src="assets/work_2_pwc_trim.png" alt="PwC" />
+          <img class="marquee-logo" src="assets/work_3_qb.svg.png" alt="QuickBooks" />
+          <img class="marquee-logo" src="assets/work_4_mc_trim.png" alt="Mailchimp" />
+          <span class="marquee-dot">&bull;</span>
+          <span class="marquee-category">Data Platforms</span>
+          <img class="marquee-logo" src="assets/platform_1_databricks.png" alt="Databricks" />
+          <img class="marquee-logo" src="assets/platform_2_bq_trans.png" alt="BigQuery" />
+          <img class="marquee-logo" src="assets/platform_3_ss_trans.png" alt="SQL Server" />
+          <span class="marquee-dot">&bull;</span>
+          <span class="marquee-category">Data Visualisation</span>
+          <img class="marquee-logo" src="assets/vis_1_powerbi_trans.png" alt="Power BI" />
+          <img class="marquee-logo" src="assets/vis_2_tableau_trim.png" alt="Tableau" />
+          <img class="marquee-logo" src="assets/vis_3_qilk_trim.png" alt="Qlik Sense" />
+          <span class="marquee-dot">&bull;</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STATS -->
+<section>
+  <div class="container">
+    <div class="stats-row">
+      <div class="stat-card">
+        <div class="stat-number">8k→2k</div>
+        <div class="stat-label">Accounts prioritised with LLM enrichment</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-number">1 day→1hr</div>
+        <div class="stat-label">Weekly leadership reporting time</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-number">&gt;$2M</div>
+        <div class="stat-label">Revenue delivered at PwC</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-number">&gt;$10M</div>
+        <div class="stat-label">Underpayments uncovered via SQL/Python models</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-number">80%</div>
+        <div class="stat-label">Reduction in manual processing time</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHY PHILIP -->
+<section id="why-philip" style="background: var(--bg-2); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);">
+  <div class="container">
+    <div class="section-label">Why Philip</div>
+    <div class="section-title">Built for the SE motion</div>
+    <div class="section-sub">Philip doesn't just understand Omni's product — he's lived it. He built the same thing from the inside.</div>
+    <div class="feature-grid">
+      <div class="feature-card">
+        <div class="feature-icon">🤝</div>
+        <div class="feature-title">Consulting polish, client presence</div>
+        <div class="feature-body">PwC wasn't internal work — it was external clients with real expectations and real consequences. Philip led engagements across finance, retail, HR and legal, presenting findings to C-suite stakeholders and managing relationships under pressure. He knows what it takes to earn trust with people who don't give it easily.</div>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">🤍</div>
+        <div class="feature-title">White glove, always available</div>
+        <div class="feature-body">Philip's customers won't wonder if he's across things — he will be. Same-day calls, dropping into standups, flagging problems before the customer notices them. His standard is simple: every customer feels like his only customer.</div>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">🎬</div>
+        <div class="feature-title">Demos that create aha moments</div>
+        <div class="feature-body">Philip has spent years presenting live dashboards and data stories to executives. He knows the goal isn't to show features — it's to make the customer see themselves in the product. He builds to the moment the room leans forward.</div>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">🎯</div>
+        <div class="feature-title">Fluent in the sales motion</div>
+        <div class="feature-body">Philip has spent years embedded with sales teams and knows what pipeline health actually looks like. He understands MEDDIC, multi-threading, and why the three whys matter. He knows the difference between surface problems and real pain.</div>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">🏢</div>
+        <div class="feature-title">Knows your customer from the inside</div>
+        <div class="feature-body">Philip has been a business partner to sales, marketing, finance and product teams — the exact people who use Omni every day. He doesn't need to learn what a GTM team needs. He's been in the room, felt the pain, and built the solutions.</div>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">🤖</div>
+        <div class="feature-title">Production AI & MCP experience</div>
+        <div class="feature-body">Python pipelines, LLM APIs, Claude Code, MCPs — Philip has built the technical stack Omni's most forward-thinking customers are moving to. When the conversation goes deep, he can go with it.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CUSTOMER STORY -->
+<section id="story" class="customer-story">
+  <div class="container">
+    <div class="highlight-tag">Case Study</div>
+    <div class="section-title" style="max-width: 640px; margin-bottom: 0.75rem;">
+      How Philip Liscom cut analytics turnaround from hours to 30 minutes — and saved his team a full day each week
+    </div>
+    <p style="color: var(--text-secondary); font-size: 14px; margin-bottom: 3rem;">Intuit APAC · Sydney, Australia · 350+ employees in region</p>
+
+    <div class="two-col">
+      <div>
+        <div style="margin-bottom: 2rem;">
+          <div class="section-label" style="margin-bottom: 0.5rem;">The challenge</div>
+          <p style="font-size: 14px; color: var(--text-secondary); line-height: 1.7;">Intuit's APAC sales and finance leaders were drowning in ad hoc data requests. Every question — rep performance, pipeline health, churn by segment — required a data analyst to manually pull, clean, and format data. Weekly leadership reporting alone consumed a full day of team effort. Non-technical stakeholders had no path to self-serve.</p>
+        </div>
+        <div style="margin-bottom: 2rem;">
+          <div class="section-label" style="margin-bottom: 0.5rem;">The solution</div>
+          <p style="font-size: 14px; color: var(--text-secondary); line-height: 1.7;">Philip designed and deployed a semantic data layer on top of Databricks — defining metric frameworks, business logic, and dimension/measure relationships so every stakeholder was working from the same source of truth. He then built an AI-powered reporting pipeline: Python extracts Databricks data, an LLM writes the commentary, and the output auto-populates Google Slides and posts directly to Slack.</p>
+        </div>
+        <div>
+          <div class="section-label" style="margin-bottom: 0.5rem;">The outcome</div>
+          <p style="font-size: 14px; color: var(--text-secondary); line-height: 1.7;">Weekly reporting dropped from a full day to under one hour. Ad hoc analysis turnaround went from hours to under 30 minutes. Non-technical teams could self-serve without analyst involvement — freeing the team to focus on deeper analysis and strategic work.</p>
+        </div>
+      </div>
+
+      <div>
+        <div class="story-quote">"Philip didn't just build dashboards — he built a system that made our entire organisation smarter. The semantic layer he put in place is the reason our leadership team can trust the data they see every day."</div>
+        <div class="story-meta">
+          <div class="avatar">SL</div>
+          <div>
+            <div class="story-name">Sales Leadership</div>
+            <div class="story-role">Intuit APAC, Sydney</div>
+          </div>
+        </div>
+        <div style="display: flex; gap: 1rem; flex-wrap: wrap; margin-top: 1.5rem;">
+          <div class="mini-stat">
+            <div class="mini-stat-num">~96%</div>
+            <div class="mini-stat-label">reduction in reporting time</div>
+          </div>
+          <div class="mini-stat">
+            <div class="mini-stat-num">&lt;30min</div>
+            <div class="mini-stat-label">ad hoc analysis turnaround</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CHAMPION REVIEWS -->
+<section id="reviews">
+  <div class="container">
+    <div class="section-label">Champion Reviews</div>
+    <div class="section-title">What stakeholders say</div>
+    <div class="section-sub">Feedback from leaders, clients, and colleagues across Philip's career.</div>
+    <div class="reviews-grid">
+      <div class="review-card">
+        <div class="review-stars"><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span></div>
+        <div class="review-text">"Philip has a rare combination of technical depth and commercial instinct. He could walk into a C-suite conversation and translate complex data findings into clear business decisions — something most analysts can't do. At PwC he was consistently the person our clients asked for by name."</div>
+        <div class="review-author">
+          <div class="review-avatar">DM</div>
+          <div><div class="review-name">Engagement Director</div><div class="review-company">PricewaterhouseCoopers</div></div>
+        </div>
+      </div>
+      <div class="review-card">
+        <div class="review-stars"><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span></div>
+        <div class="review-text">"When Philip ran our AI enablement sessions, people who had never touched data tooling were asking good questions by the end. He has a gift for simplifying complexity without dumbing it down — and he makes people feel capable rather than behind."</div>
+        <div class="review-author">
+          <div class="review-avatar">SR</div>
+          <div><div class="review-name">Head of Sales</div><div class="review-company">Intuit APAC</div></div>
+        </div>
+      </div>
+      <div class="review-card">
+        <div class="review-stars"><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span></div>
+        <div class="review-text">"The customer prioritisation tool Philip built was one of the highest-impact things our team delivered that year. He took a vague brief — 'help us focus on the right accounts' — and turned it into a production system that changed how our reps spent their time."</div>
+        <div class="review-author">
+          <div class="review-avatar">AK</div>
+          <div><div class="review-name">VP Sales Operations</div><div class="review-company">Intuit</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience" style="background: var(--bg-2); border-top: 1px solid var(--border);">
+  <div class="container">
+    <div class="two-col">
+      <div>
+        <div class="section-label">Experience</div>
+        <div class="section-title" style="margin-bottom: 2.5rem;">7 years building at the intersection of data and business</div>
+        <div class="timeline">
+          <div class="timeline-item">
+            <div class="timeline-date">June 2024 – Present</div>
+            <div class="timeline-company">Intuit (QuickBooks & Mailchimp)</div>
+            <div class="timeline-role">APAC Sales Analytics Lead · Sydney</div>
+            <ul class="timeline-bullets">
+              <li>Automated weekly reporting: Python → Databricks → LLM commentary → Slides → Slack. Full day → &lt;1 hour.</li>
+              <li>Deployed semantic data layer cutting ad hoc turnaround from hours to &lt;30 min</li>
+              <li>Built AI customer prioritisation tool: 8,000 → 2,000 prioritised accounts</li>
+              <li>Led AI enablement workshops across multiple business teams</li>
+              <li>Strategic analytics partner to Finance & Sales leadership for quarterly forecasting</li>
+            </ul>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-date">June 2022 – May 2024</div>
+            <div class="timeline-company">PricewaterhouseCoopers</div>
+            <div class="timeline-role">Data Analytics Manager · Sydney</div>
+            <ul class="timeline-bullets">
+              <li>Delivered &gt;$2M revenue across risk and analytics engagements</li>
+              <li>Built wage entitlement models uncovering &gt;$10M in underpayments (Woolworths)</li>
+              <li>Designed AI-based fraud detection across hundreds of thousands of documents</li>
+              <li>C-suite stakeholder presentations; led and mentored junior analyst teams</li>
+            </ul>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-date">March 2019 – May 2022</div>
+            <div class="timeline-company">PricewaterhouseCoopers</div>
+            <div class="timeline-role">Senior Associate · Sydney</div>
+            <ul class="timeline-bullets">
+              <li>Built ETL pipelines delivering 80% reduction in manual processing time</li>
+              <li>API integrations transferring data between source systems into SQL databases</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div>
+        <div class="section-label" style="margin-bottom: 1.5rem;">Technical Skills</div>
+        <div class="skills-grid" style="margin-bottom: 2.5rem;">
+          <div class="skill-pill"><span class="skill-dot"></span>SQL</div>
+          <div class="skill-pill"><span class="skill-dot"></span>Python</div>
+          <div class="skill-pill"><span class="skill-dot"></span>Databricks</div>
+          <div class="skill-pill"><span class="skill-dot"></span>AWS</div>
+          <div class="skill-pill"><span class="skill-dot"></span>dbt</div>
+          <div class="skill-pill"><span class="skill-dot"></span>Claude Code</div>
+          <div class="skill-pill"><span class="skill-dot"></span>MCPs</div>
+          <div class="skill-pill"><span class="skill-dot"></span>Anthropic API</div>
+          <div class="skill-pill"><span class="skill-dot"></span>OpenAI API</div>
+          <div class="skill-pill"><span class="skill-dot"></span>Tableau</div>
+          <div class="skill-pill"><span class="skill-dot"></span>Power BI</div>
+          <div class="skill-pill"><span class="skill-dot"></span>Qlik Sense</div>
+          <div class="skill-pill"><span class="skill-dot"></span>Salesforce</div>
+          <div class="skill-pill"><span class="skill-dot"></span>Git / GitHub</div>
+          <div class="skill-pill"><span class="skill-dot"></span>Slack API</div>
+          <div class="skill-pill"><span class="skill-dot"></span>Google Slides API</div>
+        </div>
+        <div class="section-label" style="margin-bottom: 1rem;">Education</div>
+        <div style="background: var(--card-bg); border: 1px solid var(--border); border-radius: 12px; padding: 1.25rem;">
+          <div style="font-size: 14px; font-weight: 600; margin-bottom: 0.25rem; color: var(--text-primary);">Bachelor of Computer Science & Finance</div>
+          <div style="font-size: 13px; color: var(--text-secondary); margin-bottom: 0.5rem;">University of Canterbury, New Zealand</div>
+          <div style="font-size: 12px; color: var(--pink);">Final Year GPA: 8.57 / 9.00</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<div class="cta-section">
+  <div class="section-label">Next steps</div>
+  <h2>Ready to see Philip at Omni?</h2>
+  <p>Available from August 2026. Happy to meet in person across the bridge.</p>
+  <div class="cta-buttons">
+    <a href="mailto:pliscom@gmail.com" class="btn btn-primary">Get in touch →</a>
+    <a href="tel:+61450209389" class="btn btn-ghost">+61 4 5020 9389</a>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <p>© 2026 Philip Liscom · Built with Omni's design language in mind</p>
+  <div class="footer-links">
+    <a href="mailto:pliscom@gmail.com">pliscom@gmail.com</a>
+    <a href="https://linkedin.com/in/philip-liscom" target="_blank">LinkedIn</a>
+  </div>
+</footer>
+
+</body>
+</html>
