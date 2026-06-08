@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Philip Liscom — Solutions Engineer</title>
+  <title>Philip Liscom - Solutions Engineer</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
@@ -277,13 +277,18 @@
       border: 1px solid var(--border);
       border-radius: 16px;
       overflow: hidden;
-      margin-bottom: 4rem;
+      margin-bottom: 2rem;
     }
 
     .stat-card {
       background: var(--card-bg);
-      padding: 2rem 1.5rem;
+      padding: 1.5rem 1.5rem;
       text-align: center;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      min-height: 130px;
     }
 
     .stat-number {
@@ -316,19 +321,26 @@
 
     .feature-card:hover { background: var(--bg-2); }
 
+    .feature-head {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      margin-bottom: 0.75rem;
+    }
+
     .feature-icon {
       width: 40px; height: 40px;
+      flex-shrink: 0;
       background: var(--bg-2);
       border: 1px solid var(--border);
       border-radius: 10px;
       display: flex;
       align-items: center;
       justify-content: center;
-      margin-bottom: 1rem;
       font-size: 18px;
     }
 
-    .feature-title { font-size: 15px; font-weight: 600; margin-bottom: 0.5rem; color: var(--text-primary); }
+    .feature-title { font-size: 15px; font-weight: 600; color: var(--text-primary); }
     .feature-body { font-size: 13px; color: var(--text-secondary); line-height: 1.6; }
 
     /* CUSTOMER STORY */
@@ -484,10 +496,27 @@
 
     /* CTA SECTION */
     .cta-section {
+      position: relative;
+      isolation: isolate;
+      overflow: hidden;
       text-align: center;
       padding: 100px 2rem;
       border-top: 1px solid var(--border);
       background: var(--bg-2);
+    }
+
+    .cta-section::after {
+      content: '';
+      position: absolute;
+      left: 50%;
+      bottom: -40%;
+      transform: translateX(-50%);
+      width: 140%;
+      height: 280px;
+      background: radial-gradient(ellipse at center, hsla(340, 95%, 70%, 0.14), hsla(265, 90%, 70%, 0.07) 45%, transparent 75%);
+      filter: blur(40px);
+      z-index: -1;
+      pointer-events: none;
     }
 
     .cta-section h2 {
@@ -548,6 +577,7 @@
 
     /* FOOTER */
     footer {
+      position: relative;
       border-top: 1px solid var(--border);
       padding: 2rem;
       display: flex;
@@ -556,6 +586,22 @@
       flex-wrap: wrap;
       gap: 1rem;
       background: var(--bg);
+      overflow: hidden;
+      isolation: isolate;
+    }
+
+    footer::before {
+      content: '';
+      position: absolute;
+      left: 50%;
+      bottom: -60%;
+      transform: translateX(-50%);
+      width: 140%;
+      height: 220px;
+      background: radial-gradient(ellipse at center, hsla(340, 95%, 70%, 0.16), hsla(265, 90%, 70%, 0.08) 45%, transparent 75%);
+      filter: blur(40px);
+      z-index: -1;
+      pointer-events: none;
     }
 
     footer p { font-size: 12px; color: var(--text-muted); }
@@ -741,14 +787,16 @@
 
     .ai-bar {
       width: 64px;
-      background: linear-gradient(180deg, var(--pink-light), var(--pink));
+      background: linear-gradient(180deg, #60a5fa, #2563eb);
       border-radius: 6px 6px 0 0;
     }
 
     .ai-bar-label { font-size: 12px; color: var(--text-muted); margin-top: 0.6rem; }
 
     .ai-stat-highlight {
-      display: inline-flex;
+      display: flex;
+      width: 100%;
+      box-sizing: border-box;
       align-items: baseline;
       gap: 0.5rem;
       background: var(--pink-bg);
@@ -840,7 +888,7 @@
 <nav>
   <div class="nav-inner">
     <a class="nav-logo" href="https://omni.co" target="_blank">
-      <img style="height: 30px; width: auto; display: block;" src="assets/omni_logo.png" alt="Omni" />
+      <img style="height: 28px; width: auto; display: block;" src="assets/philip_omni_logo_2_recolored.png" alt="Philip x Omni" />
     </a>
     <div class="nav-menu">
       <a href="#why-philip">Why Philip for Omni</a>
@@ -859,7 +907,7 @@
   <div class="hero-split">
     <div class="hero-text">
       <h1><span class="gradient-text">Philip Liscom</span>,<br/>the analytics professional<br/>built for <em>Omni</em></h1>
-      <p>Philip has spent 7 years as the customer Omni is selling to. He's seen the pain across dozens of businesses, built the solutions — and now he wants to take that story to market with Omni.</p>
+      <p>Philip has spent 7 years as the customer Omni is selling to. He's seen the pain across dozens of businesses, built the solutions - and now he wants to take that story to market with Omni.</p>
       <div class="hero-cta">
         <a href="#why-philip" class="btn btn-primary">Why Philip →</a>
         <a href="#experience" class="btn btn-ghost">View experience</a>
@@ -875,7 +923,7 @@
         <div class="ai-response-card">
           <div class="ai-avatar">✦</div>
           <div>
-            <div class="ai-response-title">Weekly Business Review prep — before vs after automation</div>
+            <div class="ai-response-title">Weekly Business Review prep - before vs after automation</div>
             <div class="ai-bar-chart">
               <div class="ai-bar-group">
                 <div class="ai-bar-stack">
@@ -896,7 +944,7 @@
               <span class="ai-stat-number">87.5%</span>
               <span class="ai-stat-label">reduction in weekly reporting time</span>
             </div>
-            <p class="ai-response-text">Philip designed a Python → Databricks → LLM → Slides/Slack pipeline that auto-generates Weekly Business Review decks and commentary — cutting prep time from a full working day to under an hour, every single week.</p>
+            <p class="ai-response-text">Philip designed a Python → Databricks → LLM → Slides/Slack pipeline that auto-generates Weekly Business Review decks and commentary - cutting prep time from a full working day to under an hour, every single week.</p>
           </div>
         </div>
       </div>
@@ -950,28 +998,28 @@
 </section>
 
 <!-- STATS -->
-<section>
+<section style="padding-top: 24px; padding-bottom: 24px;">
   <div class="container">
     <div class="stats-row">
       <div class="stat-card">
-        <div class="stat-number">8k→2k</div>
-        <div class="stat-label">Accounts prioritised with LLM enrichment</div>
+        <div class="stat-number">5+ years</div>
+        <div class="stat-label">Analytics consulting</div>
       </div>
       <div class="stat-card">
-        <div class="stat-number">1 day→1hr</div>
-        <div class="stat-label">Weekly leadership reporting time</div>
+        <div class="stat-number">2+ years</div>
+        <div class="stat-label">Embedded in GTM teams</div>
       </div>
       <div class="stat-card">
-        <div class="stat-number">&gt;$2M</div>
-        <div class="stat-label">Revenue delivered at PwC</div>
+        <div class="stat-number">$10M+</div>
+        <div class="stat-label">Business impact for clients</div>
       </div>
       <div class="stat-card">
-        <div class="stat-number">&gt;$10M</div>
-        <div class="stat-label">Underpayments uncovered via SQL/Python models</div>
+        <div class="stat-number">1B+</div>
+        <div class="stat-label">Rows analysed and visualised</div>
       </div>
       <div class="stat-card">
-        <div class="stat-number">80%</div>
-        <div class="stat-label">Reduction in manual processing time</div>
+        <div class="stat-number">C-suite to engineers</div>
+        <div class="stat-label">Audiences presented to</div>
       </div>
     </div>
   </div>
@@ -982,37 +1030,49 @@
   <div class="container">
     <div class="section-label">Why Philip</div>
     <div class="section-title">Skills that transfer directly to the SE role</div>
-    <div class="section-sub" style="max-width: 760px;">Philip isn't pivoting into Solutions Engineering from scratch — he's already been doing the work. The skills he's used every day at PwC and Intuit map directly onto what Solutions Engineering demands.</div>
+    <div class="section-sub" style="max-width: 760px;">Philip isn't pivoting into Solutions Engineering from scratch - he's already been doing the work. The skills he's used every day at PwC and Intuit map directly onto what Solutions Engineering demands.</div>
     <div class="feature-grid">
       <div class="feature-card">
-        <div class="feature-icon">🤝</div>
-        <div class="feature-title">Consulting polish, client presence</div>
-        <div class="feature-body">PwC wasn't internal work — it was external clients with real expectations and real consequences. Philip led engagements across finance, retail, HR and legal, presenting findings to C-suite stakeholders and managing relationships under pressure. He knows what it takes to earn trust with people who don't give it easily.</div>
+        <div class="feature-head">
+          <div class="feature-icon">💼</div>
+          <div class="feature-title">Consulting background, client presence</div>
+        </div>
+        <div class="feature-body">From technical teams to C-suite executives, Philip knows how to read the room and tailor the message for the audience in front of him. Earned through years of external client work at PwC.</div>
       </div>
       <div class="feature-card">
-        <div class="feature-icon">🤍</div>
-        <div class="feature-title">White glove, always available</div>
-        <div class="feature-body">Philip's customers won't wonder if he's across things — he will be. Same-day calls, dropping into standups, flagging problems before the customer notices them. His standard is simple: every customer feels like his only customer.</div>
+        <div class="feature-head">
+          <div class="feature-icon">🤝</div>
+          <div class="feature-title">A partner, not a vendor</div>
+        </div>
+        <div class="feature-body">Philip's customers always have someone in their corner. Whether it's a same-day call, jumping into a standup, or getting into the detail together, he's there. Every customer feels like his only customer.</div>
       </div>
       <div class="feature-card">
-        <div class="feature-icon">🎬</div>
-        <div class="feature-title">Demos that create aha moments</div>
-        <div class="feature-body">Philip has spent years presenting live dashboards and data stories to executives. He knows the goal isn't to show features — it's to make the customer see themselves in the product. He builds to the moment the room leans forward.</div>
+        <div class="feature-head">
+          <div class="feature-icon">🎬</div>
+          <div class="feature-title">Data storytelling</div>
+        </div>
+        <div class="feature-body">Philip has spent years presenting dashboards and technical solutions to audiences across every level. He knows how to make complex data feel simple so stakeholders leave the room knowing exactly what to do next.</div>
       </div>
       <div class="feature-card">
-        <div class="feature-icon">🎯</div>
-        <div class="feature-title">Fluent in the sales motion</div>
-        <div class="feature-body">Philip has spent years embedded with sales teams and knows what pipeline health actually looks like. He understands MEDDIC, multi-threading, and why the three whys matter. He knows the difference between surface problems and real pain.</div>
+        <div class="feature-head">
+          <div class="feature-icon">🎯</div>
+          <div class="feature-title">Embedded in the sales motion</div>
+        </div>
+        <div class="feature-body">Philip has spent two years as a business partner to sales teams at Intuit, supporting pipeline management, forecasting, and target setting. He understands how deals move and what the commercial rhythm looks like from the inside.</div>
       </div>
       <div class="feature-card">
-        <div class="feature-icon">🏢</div>
-        <div class="feature-title">Knows your customer from the inside</div>
-        <div class="feature-body">Philip has been a business partner to sales, marketing, finance and product teams — the exact people who use Omni every day. He doesn't need to learn what a GTM team needs. He's been in the room, felt the pain, and built the solutions.</div>
+        <div class="feature-head">
+          <div class="feature-icon">🏢</div>
+          <div class="feature-title">Knows your customer from the inside</div>
+        </div>
+        <div class="feature-body">Philip has been a business partner to sales, marketing, finance and product teams. The exact people who use Omni every day. He doesn't need to learn what a GTM team needs because he's been one.</div>
       </div>
       <div class="feature-card">
-        <div class="feature-icon">🤖</div>
-        <div class="feature-title">Production AI & MCP experience</div>
-        <div class="feature-body">Python pipelines, LLM APIs, Claude Code, MCPs — Philip has built the technical stack Omni's most forward-thinking customers are moving to. When the conversation goes deep, he can go with it.</div>
+        <div class="feature-head">
+          <div class="feature-icon">🤖</div>
+          <div class="feature-title">Technical builder × commercial acumen</div>
+        </div>
+        <div class="feature-body">Strong SQL, Python, and data visualisation skills with production AI experience. Philip understands commercial problems first and builds technical solutions to solve them, not the other way around.</div>
       </div>
     </div>
   </div>
@@ -1023,7 +1083,7 @@
   <div class="container">
     <div class="highlight-tag">Case Study</div>
     <div class="section-title" style="max-width: 720px; margin-bottom: 0.75rem;">
-      Millions in underpayments uncovered — and guiding Woolworths through one of Australia's most complex remediations
+      Millions in underpayments uncovered - and guiding Woolworths through one of Australia's most complex remediations
     </div>
     <p style="color: var(--text-secondary); font-size: 14px; margin-bottom: 0.5rem;">PwC · Woolworths Group · Sydney, Australia</p>
     <p style="margin-bottom: 3rem;"><a href="https://www.afr.com/work-and-careers/workplace/coles-woolworths-1b-underpayment-case-off-the-rails-judge-20260322-p5rmex" target="_blank" style="font-size: 13px; color: #2563eb; text-decoration: none; font-weight: 600;">Read coverage of the case in the AFR →</a></p>
@@ -1032,19 +1092,19 @@
       <div>
         <div style="margin-bottom: 2rem;">
           <div class="section-label" style="margin-bottom: 0.5rem;">The challenge</div>
-          <p style="font-size: 14px; color: var(--text-secondary); line-height: 1.7;">Woolworths suspected their payroll systems had systemic underpayment issues affecting thousands of employees across multiple pay classifications. The problem spanned years of data, complex award interpretations, and multiple internal systems — with legal, HR, finance, and data teams all needing to work together to understand the true scale.</p>
+          <p style="font-size: 14px; color: var(--text-secondary); line-height: 1.7;">Woolworths suspected their payroll systems had systemic underpayment issues affecting thousands of employees across multiple pay classifications. The problem spanned years of data, complex award interpretations, and multiple internal systems - with legal, HR, finance, and data teams all needing to work together to understand the true scale.</p>
         </div>
         <div style="margin-bottom: 2rem;">
           <div class="section-label" style="margin-bottom: 0.5rem;">The discovery</div>
-          <p style="font-size: 14px; color: var(--text-secondary); line-height: 1.7;">Philip led discovery sessions to map Woolworths' data landscape — understanding what systems they had, how teams operated, and where the data lived. Weekly working sessions with middle management, data teams, lawyers, and program leads shaped the analytical approach and built alignment across a complex stakeholder group from day one.</p>
+          <p style="font-size: 14px; color: var(--text-secondary); line-height: 1.7;">Philip led discovery sessions to map Woolworths' data landscape - understanding what systems they had, how teams operated, and where the data lived. Weekly working sessions with middle management, data teams, lawyers, and program leads shaped the analytical approach and built alignment across a complex stakeholder group from day one.</p>
         </div>
         <div style="margin-bottom: 2rem;">
           <div class="section-label" style="margin-bottom: 0.5rem;">The engagement</div>
-          <p style="font-size: 14px; color: var(--text-secondary); line-height: 1.7;">What started as weekly findings presentations evolved into daily standups as the work intensified. Philip analysed millions of rows of payroll data using SQL and built the underlying models in SQL Server, while staying on-call throughout — jumping into ad hoc calls to problem-solve in real time and keeping all stakeholders aligned as the complexity grew.</p>
+          <p style="font-size: 14px; color: var(--text-secondary); line-height: 1.7;">What started as weekly findings presentations evolved into daily standups as the work intensified. Philip analysed millions of rows of payroll data using SQL and built the underlying models in SQL Server, while staying on-call throughout - jumping into ad hoc calls to problem-solve in real time and keeping all stakeholders aligned as the complexity grew.</p>
         </div>
         <div style="margin-bottom: 2rem;">
           <div class="section-label" style="margin-bottom: 0.5rem;">The aha moment</div>
-          <p style="font-size: 14px; color: var(--text-secondary); line-height: 1.7;">When the underpayment results were ready, Philip built a layered dashboard — high-level numbers for senior stakeholders, granular drivers for the data and legal teams. One dashboard, every audience, no confusion. The room understood the scale of the problem immediately.</p>
+          <p style="font-size: 14px; color: var(--text-secondary); line-height: 1.7;">When the underpayment results were ready, Philip built a layered dashboard - high-level numbers for senior stakeholders, granular drivers for the data and legal teams. One dashboard, every audience, no confusion. The room understood the scale of the problem immediately.</p>
         </div>
         <div>
           <div class="section-label" style="margin-bottom: 0.5rem;">The outcome</div>
@@ -1137,15 +1197,15 @@
         <div class="driver-card">
           <div class="driver-title">Underpayment drivers identified</div>
           <div class="driver-row">
-            <div class="driver-row-label"><span><strong>Driver 1</strong> — Missed breaks</span><span>45%</span></div>
+            <div class="driver-row-label"><span><strong>Driver 1</strong> - Missed breaks</span><span>45%</span></div>
             <div class="driver-bar-track"><div class="driver-bar-fill" style="width: 45%;"></div></div>
           </div>
           <div class="driver-row">
-            <div class="driver-row-label"><span><strong>Driver 2</strong> — Allowances</span><span>33%</span></div>
+            <div class="driver-row-label"><span><strong>Driver 2</strong> - Allowances</span><span>33%</span></div>
             <div class="driver-bar-track"><div class="driver-bar-fill" style="width: 33%;"></div></div>
           </div>
           <div class="driver-row">
-            <div class="driver-row-label"><span><strong>Driver 3</strong> — Incorrect classification</span><span>22%</span></div>
+            <div class="driver-row-label"><span><strong>Driver 3</strong> - Incorrect classification</span><span>22%</span></div>
             <div class="driver-bar-track"><div class="driver-bar-fill" style="width: 22%;"></div></div>
           </div>
         </div>
@@ -1163,26 +1223,26 @@
     <div class="reviews-grid">
       <div class="review-card">
         <div class="review-stars"><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span></div>
-        <div class="review-text">"Philip has a rare combination of technical depth and commercial instinct. He could walk into a C-suite conversation and translate complex data findings into clear business decisions — something most analysts can't do. At PwC he was consistently the person our clients asked for by name."</div>
+        <div class="review-text">"Your ability to turn complex business strategy into actionable insights while leading capability building across multiple teams sets the gold standard for technical excellence and business acumen."</div>
         <div class="review-author">
-          <div class="review-avatar">DM</div>
-          <div><div class="review-name">Engagement Director</div><div class="review-company">PricewaterhouseCoopers</div></div>
+          <div class="review-avatar">HA</div>
+          <div><div class="review-name">Head of International Analytics</div><div class="review-company">Intuit</div></div>
         </div>
       </div>
       <div class="review-card">
         <div class="review-stars"><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span></div>
-        <div class="review-text">"When Philip ran our AI enablement sessions, people who had never touched data tooling were asking good questions by the end. He has a gift for simplifying complexity without dumbing it down — and he makes people feel capable rather than behind."</div>
+        <div class="review-text">"Philip has been playing an instrumental role in supporting the GTM and finance team. He's been working very close to finance ensuring we have the right cuts on the data to take informed decisions on forecast. He's adding a big impact on driving changes to APAC."</div>
         <div class="review-author">
-          <div class="review-avatar">SR</div>
-          <div><div class="review-name">Head of Sales</div><div class="review-company">Intuit APAC</div></div>
+          <div class="review-avatar">HF</div>
+          <div><div class="review-name">Head of Finance</div><div class="review-company">Intuit</div></div>
         </div>
       </div>
       <div class="review-card">
         <div class="review-stars"><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span></div>
-        <div class="review-text">"The customer prioritisation tool Philip built was one of the highest-impact things our team delivered that year. He took a vague brief — 'help us focus on the right accounts' — and turned it into a production system that changed how our reps spent their time."</div>
+        <div class="review-text">"Philip consistently demonstrated a fantastic 'get things done' attitude. His dedication to assisting across functions was key to bringing multiple teams together. His hard work and ability to drive complex tasks to completion make a real difference."</div>
         <div class="review-author">
-          <div class="review-avatar">AK</div>
-          <div><div class="review-name">VP Sales Operations</div><div class="review-company">Intuit</div></div>
+          <div class="review-avatar">PF</div>
+          <div><div class="review-name">Principal Finance Analyst</div><div class="review-company">Intuit</div></div>
         </div>
       </div>
     </div>
@@ -1266,7 +1326,6 @@
 <div class="cta-section" id="contact">
   <div class="section-label">Next steps</div>
   <h2>Ready to see Philip at Omni?</h2>
-  <p>Available from August 2026. Happy to meet in person across the bridge.</p>
   <div class="contact-row">
     <a href="mailto:pliscom@gmail.com" class="contact-card">
       <span class="contact-icon">✉️</span>
