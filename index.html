@@ -3,7 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Philip Liscom - Solutions Engineer</title>
+  <title>Philip x Omni - Solutions Engineer</title>
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg?v=2" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
@@ -72,13 +73,30 @@
     }
 
     .nav-menu a {
+      position: relative;
       font-family: 'Inter', sans-serif;
       font-size: 13px;
       font-weight: 600;
       color: var(--text-secondary);
       text-decoration: none;
       transition: color 0.15s;
+      padding-bottom: 4px;
     }
+
+    .nav-menu a::after {
+      content: '';
+      position: absolute;
+      left: 0; bottom: 0;
+      width: 100%;
+      height: 2px;
+      background: var(--pink);
+      border-radius: 2px;
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.2s ease;
+    }
+
+    .nav-menu a:hover::after { transform: scaleX(1); }
 
     .nav-menu a:hover { color: var(--text-primary); }
 
@@ -400,14 +418,14 @@
       position: absolute;
       top: 1rem; right: 1.25rem;
       font-size: 3rem;
-      color: var(--pink);
+      color: #2563eb;
       opacity: 0.2;
       line-height: 1;
       font-family: Georgia, serif;
     }
 
     .review-stars { display: flex; gap: 3px; margin-bottom: 0.75rem; }
-    .star { color: var(--pink); font-size: 13px; }
+    .star { color: #2563eb; font-size: 13px; }
 
     .review-text { font-size: 13.5px; line-height: 1.65; color: var(--text-secondary); margin-bottom: 1.25rem; }
 
@@ -887,13 +905,13 @@
 <!-- NAV -->
 <nav>
   <div class="nav-inner">
-    <a class="nav-logo" href="https://omni.co" target="_blank">
+    <div class="nav-logo">
       <img style="height: 28px; width: auto; display: block;" src="assets/philip_omni_logo_2_recolored.png" alt="Philip x Omni" />
-    </a>
+    </div>
     <div class="nav-menu">
       <a href="#why-philip">Why Philip for Omni</a>
       <a href="#story">Consulting Case Study</a>
-      <a href="#reviews">Champion Reviews</a>
+      <a href="#reviews">Reviews</a>
       <a href="#experience">Experience</a>
     </div>
     <div class="nav-right">
@@ -1092,7 +1110,7 @@
       <div>
         <div style="margin-bottom: 2rem;">
           <div class="section-label" style="margin-bottom: 0.5rem;">The challenge</div>
-          <p style="font-size: 14px; color: var(--text-secondary); line-height: 1.7;">Woolworths suspected their payroll systems had systemic underpayment issues affecting thousands of employees across multiple pay classifications. The problem spanned years of data, complex award interpretations, and multiple internal systems - with legal, HR, finance, and data teams all needing to work together to understand the true scale.</p>
+          <p style="font-size: 14px; color: var(--text-secondary); line-height: 1.7;">Woolworths suspected systemic underpayment issues affecting thousands of employees across multiple pay classifications. The root cause was years of legacy systems and software migrations, each one leaving data issues in its wake. The true scale was impossible to see without a dedicated analytical effort, and legal, HR, finance, and data teams all needed to work together to untangle it.</p>
         </div>
         <div style="margin-bottom: 2rem;">
           <div class="section-label" style="margin-bottom: 0.5rem;">The discovery</div>
@@ -1103,7 +1121,7 @@
           <p style="font-size: 14px; color: var(--text-secondary); line-height: 1.7;">What started as weekly findings presentations evolved into daily standups as the work intensified. Philip analysed millions of rows of payroll data using SQL and built the underlying models in SQL Server, while staying on-call throughout - jumping into ad hoc calls to problem-solve in real time and keeping all stakeholders aligned as the complexity grew.</p>
         </div>
         <div style="margin-bottom: 2rem;">
-          <div class="section-label" style="margin-bottom: 0.5rem;">The aha moment</div>
+          <div class="section-label" style="margin-bottom: 0.5rem;">The delivery</div>
           <p style="font-size: 14px; color: var(--text-secondary); line-height: 1.7;">When the underpayment results were ready, Philip built a layered dashboard - high-level numbers for senior stakeholders, granular drivers for the data and legal teams. One dashboard, every audience, no confusion. The room understood the scale of the problem immediately.</p>
         </div>
         <div>
@@ -1217,9 +1235,9 @@
 <!-- CHAMPION REVIEWS -->
 <section id="reviews">
   <div class="container">
-    <div class="section-label">Champion Reviews</div>
-    <div class="section-title">What stakeholders say</div>
-    <div class="section-sub">Feedback from leaders, clients, and colleagues across Philip's career.</div>
+    <div class="section-label">Reviews</div>
+    <div class="section-title">What Philip's Champions say</div>
+    <div class="section-sub">Feedback from leaders and colleagues across Philip's career.</div>
     <div class="reviews-grid">
       <div class="review-card">
         <div class="review-stars"><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span></div>
@@ -1298,7 +1316,6 @@
           <div class="skill-pill"><span class="skill-dot"></span>Python</div>
           <div class="skill-pill"><span class="skill-dot"></span>Databricks</div>
           <div class="skill-pill"><span class="skill-dot"></span>AWS</div>
-          <div class="skill-pill"><span class="skill-dot"></span>dbt</div>
           <div class="skill-pill"><span class="skill-dot"></span>Claude Code</div>
           <div class="skill-pill"><span class="skill-dot"></span>MCPs</div>
           <div class="skill-pill"><span class="skill-dot"></span>Anthropic API</div>
@@ -1309,7 +1326,7 @@
           <div class="skill-pill"><span class="skill-dot"></span>Salesforce</div>
           <div class="skill-pill"><span class="skill-dot"></span>Git / GitHub</div>
           <div class="skill-pill"><span class="skill-dot"></span>Slack API</div>
-          <div class="skill-pill"><span class="skill-dot"></span>Google Slides API</div>
+          <div class="skill-pill"><span class="skill-dot"></span>Google API</div>
         </div>
         <div class="section-label" style="margin-bottom: 1rem;">Education</div>
         <div style="background: var(--card-bg); border: 1px solid var(--border); border-radius: 12px; padding: 1.25rem;">
