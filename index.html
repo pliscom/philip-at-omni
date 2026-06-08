@@ -510,6 +510,15 @@
 
     .skill-pill:hover { border-color: var(--pink); color: var(--text-primary); }
 
+    .skill-group-label {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin: 1.25rem 0 0.6rem;
+    }
+
     .skill-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--pink); flex-shrink: 0; }
 
     /* CTA SECTION */
@@ -722,7 +731,7 @@
     .driver-bar-fill {
       height: 100%;
       border-radius: 6px;
-      background: linear-gradient(90deg, var(--pink), var(--pink-light));
+      background: linear-gradient(90deg, #2563eb, #60a5fa);
     }
 
     /* AI DEMO */
@@ -1141,6 +1150,21 @@
             <div class="mini-stat-label">of employees remediated</div>
           </div>
         </div>
+        <div class="driver-card">
+          <div class="driver-title">Underpayment drivers identified</div>
+          <div class="driver-row">
+            <div class="driver-row-label"><span><strong>Driver 1</strong> - Missed breaks</span><span>45%</span></div>
+            <div class="driver-bar-track"><div class="driver-bar-fill" style="width: 45%;"></div></div>
+          </div>
+          <div class="driver-row">
+            <div class="driver-row-label"><span><strong>Driver 2</strong> - Allowances</span><span>33%</span></div>
+            <div class="driver-bar-track"><div class="driver-bar-fill" style="width: 33%;"></div></div>
+          </div>
+          <div class="driver-row">
+            <div class="driver-row-label"><span><strong>Driver 3</strong> - Incorrect classification</span><span>22%</span></div>
+            <div class="driver-bar-track"><div class="driver-bar-fill" style="width: 22%;"></div></div>
+          </div>
+        </div>
         <div class="scatter-card">
           <div class="scatter-title">Employee pay variance vs. award rate</div>
           <svg viewBox="0 0 440 300" class="scatter-svg" role="img" aria-label="Scatter plot of employees by salary and under/overpayment amount">
@@ -1210,21 +1234,6 @@
           <div class="scatter-legend">
             <span class="scatter-legend-item"><span class="scatter-dot" style="background: #ef4444;"></span>Underpaid employee</span>
             <span class="scatter-legend-item"><span class="scatter-dot" style="background: #22c55e;"></span>Overpaid employee</span>
-          </div>
-        </div>
-        <div class="driver-card">
-          <div class="driver-title">Underpayment drivers identified</div>
-          <div class="driver-row">
-            <div class="driver-row-label"><span><strong>Driver 1</strong> - Missed breaks</span><span>45%</span></div>
-            <div class="driver-bar-track"><div class="driver-bar-fill" style="width: 45%;"></div></div>
-          </div>
-          <div class="driver-row">
-            <div class="driver-row-label"><span><strong>Driver 2</strong> - Allowances</span><span>33%</span></div>
-            <div class="driver-bar-track"><div class="driver-bar-fill" style="width: 33%;"></div></div>
-          </div>
-          <div class="driver-row">
-            <div class="driver-row-label"><span><strong>Driver 3</strong> - Incorrect classification</span><span>22%</span></div>
-            <div class="driver-bar-track"><div class="driver-bar-fill" style="width: 22%;"></div></div>
           </div>
         </div>
       </div>
@@ -1311,22 +1320,37 @@
       </div>
       <div>
         <div class="section-label" style="margin-bottom: 1.5rem;">Technical Skills</div>
-        <div class="skills-grid" style="margin-bottom: 2.5rem;">
+        <div class="skill-group-label" style="margin-top: 0;">Languages &amp; Query</div>
+        <div class="skills-grid">
           <div class="skill-pill"><span class="skill-dot"></span>SQL</div>
           <div class="skill-pill"><span class="skill-dot"></span>Python</div>
+        </div>
+        <div class="skill-group-label">Data Platforms</div>
+        <div class="skills-grid">
           <div class="skill-pill"><span class="skill-dot"></span>Databricks</div>
+          <div class="skill-pill"><span class="skill-dot"></span>SQL Server</div>
+          <div class="skill-pill"><span class="skill-dot"></span>BigQuery</div>
           <div class="skill-pill"><span class="skill-dot"></span>AWS</div>
-          <div class="skill-pill"><span class="skill-dot"></span>Claude Code</div>
-          <div class="skill-pill"><span class="skill-dot"></span>MCPs</div>
-          <div class="skill-pill"><span class="skill-dot"></span>Anthropic API</div>
-          <div class="skill-pill"><span class="skill-dot"></span>OpenAI API</div>
-          <div class="skill-pill"><span class="skill-dot"></span>Tableau</div>
-          <div class="skill-pill"><span class="skill-dot"></span>Power BI</div>
+        </div>
+        <div class="skill-group-label">Data Visualisation</div>
+        <div class="skills-grid">
           <div class="skill-pill"><span class="skill-dot"></span>Qlik Sense</div>
-          <div class="skill-pill"><span class="skill-dot"></span>Salesforce</div>
+          <div class="skill-pill"><span class="skill-dot"></span>Power BI</div>
+          <div class="skill-pill"><span class="skill-dot"></span>Tableau</div>
+        </div>
+        <div class="skill-group-label">AI Tools</div>
+        <div class="skills-grid">
+          <div class="skill-pill"><span class="skill-dot"></span>OpenAI</div>
+          <div class="skill-pill"><span class="skill-dot"></span>Claude / Anthropic</div>
+          <div class="skill-pill"><span class="skill-dot"></span>Cursor</div>
+          <div class="skill-pill"><span class="skill-dot"></span>MCPs</div>
+        </div>
+        <div class="skill-group-label">Software</div>
+        <div class="skills-grid" style="margin-bottom: 2.5rem;">
           <div class="skill-pill"><span class="skill-dot"></span>Git / GitHub</div>
-          <div class="skill-pill"><span class="skill-dot"></span>Slack API</div>
+          <div class="skill-pill"><span class="skill-dot"></span>Salesforce</div>
           <div class="skill-pill"><span class="skill-dot"></span>Google API</div>
+          <div class="skill-pill"><span class="skill-dot"></span>Slack API</div>
         </div>
         <div class="section-label" style="margin-bottom: 1rem;">Education</div>
         <div style="background: var(--card-bg); border: 1px solid var(--border); border-radius: 12px; padding: 1.25rem;">
