@@ -398,12 +398,42 @@
     .story-role { font-size: 13px; color: var(--text-secondary); }
 
     /* CHAMPION REVIEWS */
-    .reviews-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    .reviews-carousel {
+      display: flex;
+      align-items: center;
       gap: 1rem;
       margin-top: 3rem;
     }
+
+    .reviews-arrow {
+      flex-shrink: 0;
+      width: 40px; height: 40px;
+      border-radius: 50%;
+      border: 1px solid var(--border);
+      background: var(--card-bg);
+      color: var(--text-primary);
+      font-size: 16px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.15s;
+    }
+
+    .reviews-arrow:hover { border-color: var(--pink); color: var(--pink); }
+
+    .reviews-grid {
+      display: flex;
+      gap: 1rem;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      scroll-behavior: smooth;
+      flex: 1;
+      padding-bottom: 0.5rem;
+      scrollbar-width: none;
+    }
+
+    .reviews-grid::-webkit-scrollbar { display: none; }
 
     .review-card {
       background: var(--card-bg);
@@ -411,6 +441,17 @@
       border-radius: 14px;
       padding: 1.5rem;
       position: relative;
+      flex: 0 0 calc((100% - 2rem) / 3);
+      scroll-snap-align: start;
+      min-width: 260px;
+    }
+
+    @media (max-width: 900px) {
+      .review-card { flex: 0 0 calc((100% - 1rem) / 2); }
+    }
+
+    @media (max-width: 620px) {
+      .review-card { flex: 0 0 100%; }
     }
 
     .review-card::before {
@@ -1248,31 +1289,59 @@
     <div class="section-label">Reviews</div>
     <div class="section-title">What Philip's Champions say</div>
     <div class="section-sub">Feedback from leaders and colleagues across Philip's career.</div>
-    <div class="reviews-grid">
-      <div class="review-card">
-        <div class="review-stars"><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span></div>
-        <div class="review-text">"Your ability to turn complex business strategy into actionable insights while leading capability building across multiple teams sets the gold standard for technical excellence and business acumen."</div>
-        <div class="review-author">
-          <div class="review-avatar">HA</div>
-          <div><div class="review-name">Head of International Analytics</div><div class="review-company">Intuit</div></div>
+    <div class="reviews-carousel">
+      <button class="reviews-arrow" aria-label="Previous reviews" onclick="document.getElementById('reviews-track').scrollBy({left: -320, behavior: 'smooth'})">←</button>
+      <div class="reviews-grid" id="reviews-track">
+        <div class="review-card">
+          <div class="review-stars"><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span></div>
+          <div class="review-text">"Your ability to turn complex business strategy into actionable insights while leading capability building across multiple teams sets the gold standard for technical excellence and business acumen."</div>
+          <div class="review-author">
+            <div class="review-avatar">HA</div>
+            <div><div class="review-name">Head of International Analytics</div><div class="review-company">Intuit</div></div>
+          </div>
+        </div>
+        <div class="review-card">
+          <div class="review-stars"><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span></div>
+          <div class="review-text">"Philip has been playing an instrumental role in supporting the GTM and finance team. He's been working very close to finance ensuring we have the right cuts on the data to take informed decisions on forecast. He's adding a big impact on driving changes to APAC."</div>
+          <div class="review-author">
+            <div class="review-avatar">HF</div>
+            <div><div class="review-name">Head of Finance</div><div class="review-company">Intuit</div></div>
+          </div>
+        </div>
+        <div class="review-card">
+          <div class="review-stars"><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span></div>
+          <div class="review-text">"Philip consistently demonstrated a fantastic 'get things done' attitude. His dedication to assisting across functions was key to bringing multiple teams together. His hard work and ability to drive complex tasks to completion make a real difference."</div>
+          <div class="review-author">
+            <div class="review-avatar">PF</div>
+            <div><div class="review-name">Principal Finance Analyst</div><div class="review-company">Intuit</div></div>
+          </div>
+        </div>
+        <div class="review-card">
+          <div class="review-stars"><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span></div>
+          <div class="review-text">"Thank you for your quick response and your amazing support. You were a massive help and it will be a game changer for me. Thanks mate, and looking forward to working and learning from you."</div>
+          <div class="review-author">
+            <div class="review-avatar">MM</div>
+            <div><div class="review-name">Mid Market Account Executive</div><div class="review-company">Intuit</div></div>
+          </div>
+        </div>
+        <div class="review-card">
+          <div class="review-stars"><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span></div>
+          <div class="review-text">"Incredible leadership, resilience, innovation, and collaboration in getting to workable KPI Reviews under our new org model within a week of announcement - a remarkable feat that kept our business humming. Truly Stronger Together."</div>
+          <div class="review-author">
+            <div class="review-avatar">HS</div>
+            <div><div class="review-name">Head of Strategy</div><div class="review-company">Intuit</div></div>
+          </div>
+        </div>
+        <div class="review-card">
+          <div class="review-stars"><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span></div>
+          <div class="review-text">"The work you've done automating the Sales WBR for International GBSG has been a genuine game-changer - saving hours of manual work every week, surfacing insights faster, and reducing the risk of errors in our reporting."</div>
+          <div class="review-author">
+            <div class="review-avatar">PD</div>
+            <div><div class="review-name">Principal Data Scientist</div><div class="review-company">Intuit</div></div>
+          </div>
         </div>
       </div>
-      <div class="review-card">
-        <div class="review-stars"><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span></div>
-        <div class="review-text">"Philip has been playing an instrumental role in supporting the GTM and finance team. He's been working very close to finance ensuring we have the right cuts on the data to take informed decisions on forecast. He's adding a big impact on driving changes to APAC."</div>
-        <div class="review-author">
-          <div class="review-avatar">HF</div>
-          <div><div class="review-name">Head of Finance</div><div class="review-company">Intuit</div></div>
-        </div>
-      </div>
-      <div class="review-card">
-        <div class="review-stars"><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span></div>
-        <div class="review-text">"Philip consistently demonstrated a fantastic 'get things done' attitude. His dedication to assisting across functions was key to bringing multiple teams together. His hard work and ability to drive complex tasks to completion make a real difference."</div>
-        <div class="review-author">
-          <div class="review-avatar">PF</div>
-          <div><div class="review-name">Principal Finance Analyst</div><div class="review-company">Intuit</div></div>
-        </div>
-      </div>
+      <button class="reviews-arrow" aria-label="Next reviews" onclick="document.getElementById('reviews-track').scrollBy({left: 320, behavior: 'smooth'})">→</button>
     </div>
   </div>
 </section>
